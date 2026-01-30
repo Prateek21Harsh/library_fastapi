@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes import books, members, transactions
@@ -5,7 +6,8 @@ from app.routes import books, members, transactions
 app = FastAPI()
 
 origins = [
-    "http://localhost:3000"
+    "http://localhost:3000",
+    os.getenv("FRONTEND_URL"),  # vercel frontend
 ]
 
 app.add_middleware(
